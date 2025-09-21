@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <div class="container lore-container">
     <h1>Puzzle I: The First Cipher</h1>
     <p class="lore-text">
       Decode the phrase using a Caesar shift of <strong>7</strong>.<br>
@@ -15,7 +15,8 @@
     </p>
 
     <div class="puzzle-box">
-      <p class="cipher">Olssv aoha vb huk sha zha pzv!</p>
+      <!-- Proper cipher -->
+      <p class="cipher">Aol zljyla whao pz opkklu!</p>
       <input id="answer" type="text" placeholder="Type the decoded secret" />
       <button id="check">Unlock</button>
       <p id="status" class="lore-text"></p>
@@ -45,8 +46,7 @@
 
     if (cipherEl) {
       const cipherText = cipherEl.innerText.trim();
-      // decode with shift -7 => +19
-      const decoded = caesarShift(cipherText, 19);
+      const decoded = caesarShift(cipherText, 19); // +19 = -7 shift
 
       checkBtn.addEventListener('click', () => {
         const attempt = answerInput.value.trim();
@@ -65,4 +65,3 @@
   </script>
 </body>
 </html>
-
