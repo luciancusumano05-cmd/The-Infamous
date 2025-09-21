@@ -1,56 +1,70 @@
 /* Global dark theme */
 body {
   margin: 0;
-  background: #000;           /* Full page dark background */
-  color: #c7a94b;             /* Gold text */
+  background: #000;
+  color: #c7a94b;
   font-family: 'Cinzel Decorative', serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
+/* Containers */
 .container {
   text-align: center;
+  padding: 20px;
 }
 
-/* Black background behind the eye */
+.lore-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Eye wrapper and emblem */
 .eye-wrapper {
-  background: #000;           /* Dark box behind image */
+  background: #000;
   display: inline-block;
   padding: 20px;
   border-radius: 12px;
+  margin-bottom: 20px;
 }
 
-/* Eye image – half original size (was 150px) */
 .emblem {
   width: 75px;
   animation: spin 60s linear infinite;
 }
 
-h1 {
-  margin: 16px 0 8px;
-}
-
-.motto {
+/* Text styling */
+.motto, .lore-text {
   color: #9b8f6a;
-  font-style: italic;
+  margin: 20px 0;
+  line-height: 1.5;
 }
 
-.cta {
+/* Golden buttons (all buttons) */
+button {
   background: none;
-  border: 1px solid #c7a94b;
+  border: 2px solid #c7a94b;
   color: #c7a94b;
-  padding: 10px 20px;
-  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-family: 'Cinzel Decorative', serif;
   cursor: pointer;
-  transition: background 0.3s;
-}
-.cta:hover {
-  background: rgba(199,169,75,0.1);
+  border-radius: 6px;
+  margin-top: 20px;
+  transition: background 0.3s, transform 0.2s;
 }
 
+button:hover {
+  background: rgba(199,169,75,0.15);
+  transform: scale(1.05);
+}
+
+/* Puzzle hidden link */
+.hidden { display: none; }
+
+/* Eye rotation animation */
 @keyframes spin {
   from { transform: rotate(0); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
