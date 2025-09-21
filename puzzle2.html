@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puzzle II – Inner Circle</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container lore-container">
+    <h1>Puzzle II: The Masonic Cipher</h1>
+    <p class="lore-text">
+      The Inner Circle keeps knowledge hidden in symbols.<br>
+      Decode this cipher to reveal the secret of the Masonic Bible.
+    </p>
+
+    <div class="puzzle-box">
+      <!-- Cipher text for "The Masonic Bible is hidden" using Caesar shift 5 -->
+      <p class="cipher">Ymj Rfxhtsnj Gfnqgj nx mnijdji!</p>
+      <input id="answer" type="text" placeholder="Type the decoded secret" />
+      <button id="check">Unlock</button>
+      <p id="status" class="lore-text"></p>
+    </div>
+
+    <div id="secretLink" class="hidden">
+      <p>Congratulations! You discovered the Inner Circle Archive: 
+        <a href="innercircle2.html">Masonic Bible Secret</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Caesar shift decoder
+    function caesarShift(str, shift) {
+      return str.replace(/[a-z]/gi, (char) => {
+        const base = char <= 'Z' ? 65 : 97;
+        return String.fromCharCode(((char.charCodeAt(0) - base + shift) % 26) + base);
+      });
+    }
+
+    const cipherEl = document.querySelector('.cipher');
+    const checkBtn = document.getElementById('check');
+    const answerInput = document.getElementById('answer');
+    const status = document.getElementById('status');
+    const secretLink = document.getElementById('secretLink');
+
+    if (cipherEl) {
+      const cipherText = cipherEl.innerText.trim();
+      const decoded = caesarShift(cipherText, 21); // shift -5 = +21
+
+      checkBtn.addEventListener('click', () => {
+        const attempt = answerInput.value.trim();
+        if (!attempt) {
+          status.innerText = 'Please type the decoded phrase.';
+          return;
+        }
+        if (attempt.toLowerCase() === decoded.toLowerCase()) {
+          status.innerText = 'Unlocked — welcome.';
+          secretLink.classList.remove('hidden');
+        } else {
+          status.innerText = 'Incorrect — try again.';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
