@@ -1,43 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Puzzle — The Circle</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puzzle I – The Circle</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="page">
-<header class="header small">
-<img src="assets/eye.svg" alt="emblem" class="emblem small" />
-<a href="index.html" class="back">← Back</a>
-</header>
+  <div class="container">
+    <h1>Puzzle I: The First Cipher</h1>
+    <p class="lore-text">
+      Decode the phrase using a Caesar shift of <strong>7</strong>.<br>
+      Enter the decoded secret to unlock the hidden page.
+    </p>
 
+    <div class="puzzle-box">
+      <p class="cipher">Olssv aoha vb huk sha zha pzv!</p>
+      <input id="answer" type="text" placeholder="Type the decoded secret" />
+      <button id="check">Unlock</button>
+      <p id="status" class="lore-text"></p>
+    </div>
 
-<main class="container content">
-<h2>Puzzle I: The First Cipher</h2>
-<p class="muted">Decode the phrase using a Caesar shift of <strong>7</strong>. Enter the decoded secret to unlock the hidden page.</p>
+    <div id="secretLink" class="hidden">
+      <p>Congratulations! You unlocked: 
+        <a href="secret.html">Inner Circle Archive</a>
+      </p>
+    </div>
+  </div>
 
+  <script>
+    // Caesar shift decoder
+    function caesarShift(str, shift) {
+      return str.replace(/[a-z]/gi, (char) => {
+        const base = char <= 'Z' ? 65 : 97;
+        return String.fromCharCode(((char.charCodeAt(0) - base + shift) % 26) + base);
+      });
+    }
 
-<div class="puzzle-box">
-<p class="cipher">Olssv aoha vb huk sha zha pzv!</p>
-<label for="answer">Decoded secret</label>
-<input id="answer" placeholder="type the secret" />
-<button id="check">Unlock</button>
-<p id="status" class="muted"></p>
-</div>
+    const cipherEl = document.querySelector('.cipher');
+    const checkBtn = document.getElementById('check');
+    const answerInput = document.getElementById('answer');
+    const status = document.getElementById('status');
+    const secretLink = document.getElementById('secretLink');
 
+    if (cipherEl) {
+      const cipherText = cipherEl.innerText.trim();
+      // decode with shift -7 => +19
+      const decoded = caesarShift(cipherText, 19);
 
-<div id="secretLink" class="hidden">
-<p>Congratulations. You unlocked: <a href="/hidden/inner_circle.html">Inner Circle Archive</a></p>
-</div>
-</main>
-
-
-<footer class="footer">&copy; The Circle</footer>
-</div>
-
-
-<script src="scripts/puzzles.js"></script>
+      checkBtn.addEventListener('click', () => {
+        const attempt = answerInput.value.trim();
+        if (!attempt) {
+          status.innerText = 'Please type the decoded phrase.';
+          return;
+        }
+        if (attempt.toLowerCase() === decoded.toLowerCase()) {
+          status.innerText = 'Unlocked — welcome.';
+          secretLink.classList.remove('hidden');
+        } else {
+          status.innerText = 'Incorrect — try again.';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
+
