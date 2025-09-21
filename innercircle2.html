@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inner Circle – James Edition Masonic Bible</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Book styles */
+    .book-container {
+      display: none;
+      margin-top: 30px;
+      width: 80%;
+      max-width: 700px;
+      background: #bfa63b; /* golden cover */
+      border: 4px solid #c7a94b;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 20px #c7a94b;
+      color: #fff;
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    .book-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .book-page {
+      min-height: 300px;
+      overflow-y: auto;
+      line-height: 1.6;
+    }
+
+    .nav-buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .nav-buttons button {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container lore-container">
+    <h1>Inner Circle Archive: Masonic Bible</h1>
+    <p class="lore-text">
+      You have discovered the Masonic Bible secret.<br>
+      Click continue to view the James Edition.
+    </p>
+
+    <button class="continue-btn" id="showBook">Continue</button>
+
+    <div class="book-container" id="masonicBook">
+      <div class="book-title">James Edition – Masonic Bible</div>
+      <div class="book-page" id="bookPage">
+        <!-- Page text will be injected here -->
+      </div>
+      <div class="nav-buttons">
+        <button id="prevPage">Previous</button>
+        <button id="nextPage">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const showBtn = document.getElementById('showBook');
+    const book = document.getElementById('masonicBook');
+    const bookPage = document.getElementById('bookPage');
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
+
+    // Example: split Bible text into pages (array of strings)
+    const biblePages = [
+      "Genesis 1: In the beginning God created the heaven and the earth. ...", 
+      "Genesis 2: Thus the heavens and the earth were finished, and all the host of them. ...", 
+      "Exodus 1: Now these are the names of the children of Israel, which came into Egypt; every man and his household came with Jacob. ...",
+      // Add all other chapters here as separate strings
+    ];
+
+    let currentPage = 0;
+
+    function showPage(index) {
+      if(index < 0) index = 0;
+      if(index >= biblePages.length) index = biblePages.length - 1;
+      bookPage.innerText = biblePages[index];
+      currentPage = index;
+    }
+
+    showBtn.addEventListener('click', () => {
+      book.style.display = 'block';
+      showBtn.style.display = 'none';
+      showPage(0);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      showPage(currentPage - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      showPage(currentPage + 1);
+    });
+  </script>
+</body>
+</html>
