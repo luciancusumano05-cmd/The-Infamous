@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Puzzle — The Circle</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page">
+<header class="header small">
+<img src="assets/eye.svg" alt="emblem" class="emblem small" />
+<a href="index.html" class="back">← Back</a>
+</header>
+
+
+<main class="container content">
+<h2>Puzzle I: The First Cipher</h2>
+<p class="muted">Decode the phrase using a Caesar shift of <strong>7</strong>. Enter the decoded secret to unlock the hidden page.</p>
+
+
+<div class="puzzle-box">
+<p class="cipher">Olssv aoha vb huk sha zha pzv!</p>
+<label for="answer">Decoded secret</label>
+<input id="answer" placeholder="type the secret" />
+<button id="check">Unlock</button>
+<p id="status" class="muted"></p>
+</div>
+
+
+<div id="secretLink" class="hidden">
+<p>Congratulations. You unlocked: <a href="/hidden/inner_circle.html">Inner Circle Archive</a></p>
+</div>
+</main>
+
+
+<footer class="footer">&copy; The Circle</footer>
+</div>
+
+
+<script src="scripts/puzzles.js"></script>
+</body>
+</html>
