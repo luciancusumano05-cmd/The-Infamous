@@ -1,0 +1,26 @@
+/* Basic dark theme + mysterious aesthetic */
+:root{
+--bg: #070707;
+--gold: #c7a94b;
+--muted: #9b8f6a;
+--glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--gold);font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:18px 36px}
+.header.small{padding:12px 20px}
+.emblem{width:88px;opacity:0.95;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.6));}
+.emblem.small{width:48px}
+nav a{color:var(--gold);text-decoration:none;margin-left:18px;opacity:0.95}
+.page.hero{min-height:100vh;display:flex;flex-direction:column}
+.center{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px}
+.title{font-family:'Cinzel',serif;font-size:48px;margin:8px}
+.motto{color:var(--muted);font-style:italic}
+.cta{border:1px solid var(--gold);background:transparent;color:var(--gold);padding:12px 22px;border-radius:8px;cursor:pointer;margin-top:18px}
+.cta.pressed{transform:translateY(2px);opacity:0.9}
+.hint{color:var(--muted);margin-top:12px}
+.container{max-width:960px;margin:40px auto;padding:20px}
+.content h2{font-family:'Cinzel',serif;color:var(--gold)}
+.card{background:var(--glass);padding:18px;border-radius:12px;border:1px solid rgba(199,169,75,0.06)}
+.puzzle-box{margin-top:14px}
+input{padding:8px 10px;border-rad
